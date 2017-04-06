@@ -6,7 +6,7 @@ class Control():
         self.list_argv = []
         self.arg_reader()
         self.controller()
-        display.print_file()
+
 
     def arg_reader(self):
         if len(sys.argv) <= 1:
@@ -17,8 +17,8 @@ class Control():
     def controller(self):
         if len(self.list_argv) == 0:
             display.print_help()
-        else:
-            pass
+        elif self.list_argv[0] == '-l':
+            display.print_file()
 
 class Model():
 
