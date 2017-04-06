@@ -15,26 +15,29 @@ class Control():
             self.list_argv = sys.argv[1:]
 
     def controller(self):
-        if len(self.list_argv) == 0:
-            display.print_help()
-        elif self.list_argv[0] == '-l':
-            display.print_file()
-        elif self.list_argv[0] == '-a':
-            if len(self.list_argv) <= 1:
-                print('Unable to add: no task provided')
-            else:
-                model.appender(self.list_argv[1])
+            if len(self.list_argv) == 0:
+                display.print_help()
+            elif self.list_argv[0] == '-l':
                 display.print_file()
-        elif self.list_argv[0] == '-r':
-            try:
+            elif self.list_argv[0] == '-a':
                 if len(self.list_argv) <= 1:
-                    display.print_remove_error()
-                elif int(self.list_argv[1]) > len(model.txt):
-                    display.print_remove_error()
+                    print('Unable to add: no task provided')
                 else:
-                    model.remover(int(self.list_argv[1]))
-            except:
-                display.print_remove_error()
+                    model.appender(self.list_argv[1])
+                    display.print_file()
+            elif self.list_argv[0] == '-r':
+                try:
+                    if len(self.list_argv) <= 1:
+                        display.print_remove_error()
+                    elif int(self.list_argv[1]) > len(model.txt):
+                        display.print_remove_error()
+                    else:
+                        model.remover(int(self.list_argv[1]))
+                except:
+                    display.print_remove_error()
+            else:
+                print(" \n Unsupported argument \n")
+                display.print_help()
 
 class Model():
 

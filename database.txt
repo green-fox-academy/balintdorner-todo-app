@@ -1,4 +1,5 @@
-0 ||| Finalize the todo app
-1 ||| Repair the wasch maschine
-0 ||| Become developer
-0 ||| Feed the monkey
+[] ||| Finalize the todo app
+[] ||| Repair the wasch maschine
+[] ||| Become developer
+[] ||| Feed the monkey
+[] ||| Feed the monkey
