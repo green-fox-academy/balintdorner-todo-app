@@ -1,0 +1,3 @@
+0 ||| Visit the doctor
+1 ||| Repair the wash-maschine
+0 ||| Become a developer
