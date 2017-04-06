@@ -20,8 +20,16 @@ class Control():
             elif self.list_argv[0] == '-l':
                 display.print_file()
             elif self.list_argv[0] == '-c':
-                model.checker(int(self.list_argv[1]))
-                display.print_file()
+                try:
+                    if len(self.list_argv) <= 1:
+                        display.print_unable_to_check()
+                    elif int(self.list_argv[1]) > len(model.txt):
+                        display.print_unable_to_check()
+                    else:
+                        model.checker(int(self.list_argv[1]))
+                        display.print_file()
+                except:
+                    display.print_unable_to_check()
             elif self.list_argv[0] == '-a':
                 if len(self.list_argv) <= 1:
                     print('Unable to add: no task provided')
@@ -59,7 +67,7 @@ class Model():
         my_file.close()
 
     def appender(self, thing):
-        self.txt.append('[ ]' + '||| ' + thing + '\n')
+        self.txt.append('[ ] ' + '||| ' + thing + '\n')
         self.open_write()
 
     def remover(self, element):
@@ -83,7 +91,10 @@ class Display():
                 print(i+1, model.txt[i][:-1])
 
     def print_remove_error(self):
-        print("Unable to remove: no index provided")
+        print("Unable to remove")
+
+    def print_unable_to_check(self):
+        print("Unable to check")
 
 model = Model()
 display = Display()
