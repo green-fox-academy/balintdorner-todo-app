@@ -26,7 +26,15 @@ class Control():
                 model.appender(self.list_argv[1])
                 display.print_file()
         elif self.list_argv[0] == '-r':
-                model.remover(int(self.list_argv[1]))
+            try:
+                if len(self.list_argv) <= 1:
+                    display.print_remove_error()
+                elif int(self.list_argv[1]) > len(model.txt):
+                    display.print_remove_error()
+                else:
+                    model.remover(int(self.list_argv[1]))
+            except:
+                display.print_remove_error()
 
 class Model():
 
@@ -64,6 +72,8 @@ class Display():
             for i in range(len(model.txt)):
                 print(i+1, model.txt[i][:-1])
 
+    def print_remove_error(self):
+        print("Unable to remove: no index provided")
 
 model = Model()
 display = Display()
