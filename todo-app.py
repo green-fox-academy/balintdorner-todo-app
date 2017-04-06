@@ -19,6 +19,9 @@ class Control():
                 display.print_help()
             elif self.list_argv[0] == '-l':
                 display.print_file()
+            elif self.list_argv[0] == '-c':
+                model.checker(int(self.list_argv[1]))
+                display.print_file()
             elif self.list_argv[0] == '-a':
                 if len(self.list_argv) <= 1:
                     print('Unable to add: no task provided')
@@ -56,11 +59,15 @@ class Model():
         my_file.close()
 
     def appender(self, thing):
-        self.txt.append('0 ' + '||| ' + thing + '\n')
+        self.txt.append('[ ]' + '||| ' + thing + '\n')
         self.open_write()
 
     def remover(self, element):
         del self.txt[element]
+        self.open_write()
+
+    def checker(self, element):
+        self.txt[element] = '[x]' + self.txt[element][3:-1] + '\n'
         self.open_write()
 
 class Display():
