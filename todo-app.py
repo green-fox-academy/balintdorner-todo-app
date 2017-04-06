@@ -19,18 +19,30 @@ class Control():
             display.print_help()
         elif self.list_argv[0] == '-l':
             display.print_file()
+        elif self.list_argv[0] == '-a':
+            model.appender(self.list_argv[1])
+            display.print_file()
 
 class Model():
 
     def __init__(self):
         self.txt = ""
-        self.adder()
-#        self.txt_dict =
+        self.opener()
 
-    def adder(self):
+    def opener(self):
         my_file = open('database.txt', 'r')
         self.txt = my_file.readlines()
         my_file.close()
+
+    def open_write(self):
+        my_file = open('database.txt', 'w')
+        my_file.writelines(self.txt)
+        my_file.close()
+
+    def appender(self, thing):
+        self.txt.append('0 ' + '||| ' + thing + '\n')
+        self.open_write()
+
 
 class Display():
 

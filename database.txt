@@ -1,3 +1,4 @@
-0 ||| Visit the doctor
-1 ||| Repair the wash-maschine
-0 ||| Become a developer
+0 ||| Finalize the todo app
+1 ||| Repair the wasch maschine
+0 ||| Become developer
+0 ||| Feed the monkey
