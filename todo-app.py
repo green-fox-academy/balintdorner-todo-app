@@ -20,8 +20,13 @@ class Control():
         elif self.list_argv[0] == '-l':
             display.print_file()
         elif self.list_argv[0] == '-a':
-            model.appender(self.list_argv[1])
-            display.print_file()
+            if len(self.list_argv) <= 1:
+                print('Unable to add: no task provided')
+            else:
+                model.appender(self.list_argv[1])
+                display.print_file()
+        elif self.list_argv[0] == '-r':
+                model.remover(int(self.list_argv[1]))
 
 class Model():
 
@@ -43,6 +48,9 @@ class Model():
         self.txt.append('0 ' + '||| ' + thing + '\n')
         self.open_write()
 
+    def remover(self, element):
+        del self.txt[element]
+        self.open_write()
 
 class Display():
 
@@ -55,7 +63,6 @@ class Display():
         else:
             for i in range(len(model.txt)):
                 print(i+1, model.txt[i][:-1])
-
 
 
 model = Model()
